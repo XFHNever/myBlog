@@ -376,3 +376,45 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/myBlog/index.php
 ---
+2013/12/10 08:38:32 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/page&view=about
+---
+2013/12/10 08:53:54 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/10 13:21:51 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/10 13:22:05 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/index
+---
+2013/12/10 13:23:16 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+---
