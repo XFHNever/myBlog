@@ -7,10 +7,10 @@
 // CWebApplication properties can be configured here.
 return array(
 	'basePath'=>dirname(__FILE__).DIRECTORY_SEPARATOR.'..',
-	'name'=>'Never Blog',
+	'name'=>'Never Personal Blog',
         'theme'=>'bootstrap',
          
-        'defaultController'=>'',
+        'defaultController'=>'post',
 	// preloading 'log' component
 	'preload'=>array('log'),
 
@@ -96,8 +96,5 @@ return array(
 
 	// application-level parameters that can be accessed
 	// using Yii::app()->params['paramName']
-	'params'=>array(
-		// this is used in contact page
-		'adminEmail'=>'webmaster@example.com',
-	),
+	'params'=>require(dirname(__FILE__).'/params.php'),
 );

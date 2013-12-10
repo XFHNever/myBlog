@@ -285,3 +285,94 @@ Stack trace:
 #3 {main}
 REQUEST_URI=/myblog/
 ---
+2013/12/07 12:13:21 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/page&view=about
+---
+2013/12/07 13:09:15 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/index
+---
+2013/12/07 15:08:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/07 15:09:05 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'myblog.user' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `user`.
+in E:\code\php\myBlog\index.php (13)
+2013/12/07 15:09:20 [error] [system.db.CDbCommand] CDbCommand::fetchAll() failed: SQLSTATE[42S02]: Base table or view not found: 1146 Table 'myblog.user' doesn't exist. The SQL statement executed was: SHOW FULL COLUMNS FROM `user`.
+in E:\code\php\myBlog\index.php (13)
+2013/12/10 08:17:11 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/10 08:17:19 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/index.php
+HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/index
+---
+2013/12/10 08:17:59 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in E:\code\php\yii\framework\web\CController.php:483
+Stack trace:
+#0 E:\code\php\yii\framework\web\CController.php(270): CController->missingAction('gii')
+#1 E:\code\php\yii\framework\web\CWebApplication.php(282): CController->run('gii')
+#2 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\code\php\myBlog\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/myblog/index.php?r=site/gii
+---
+2013/12/10 08:18:06 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'The system is unable to find the requested action "gii".' in E:\code\php\yii\framework\web\CController.php:483
+Stack trace:
+#0 E:\code\php\yii\framework\web\CController.php(270): CController->missingAction('gii')
+#1 E:\code\php\yii\framework\web\CWebApplication.php(282): CController->run('gii')
+#2 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('site/gii')
+#3 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#4 E:\code\php\myBlog\index.php(13): CApplication->run()
+#5 {main}
+REQUEST_URI=/myblog/index.php?r=site/gii
+---
+2013/12/10 08:23:10 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/10 08:29:45 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myblog/
+---
+2013/12/10 08:30:44 [error] [exception.CHttpException.404] exception 'CHttpException' with message 'Unable to resolve the request "post".' in E:\code\php\yii\framework\web\CWebApplication.php:286
+Stack trace:
+#0 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController('')
+#1 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#2 E:\code\php\myBlog\index.php(13): CApplication->run()
+#3 {main}
+REQUEST_URI=/myBlog/index.php
+---
