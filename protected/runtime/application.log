@@ -4915,3 +4915,20 @@ Stack trace:
 REQUEST_URI=/myblog/index.php?r=site/profile
 HTTP_REFERER=http://127.0.0.1/myblog/index.php?r=site/login&view=login
 ---
+2013/12/19 19:08:36 [error] [php] Undefined variable: form (E:\code\php\myBlog\themes\bootstrap\views\site\login.php:19)
+Stack trace:
+#0 E:\code\php\yii\framework\web\CController.php(869): SiteController->renderFile()
+#1 E:\code\php\yii\framework\web\CController.php(782): SiteController->renderPartial()
+#2 E:\code\php\myBlog\protected\controllers\SiteController.php(98): SiteController->render()
+#3 E:\code\php\yii\framework\web\actions\CInlineAction.php(49): SiteController->actionLogin()
+#4 E:\code\php\yii\framework\web\CController.php(308): CInlineAction->runWithParams()
+#5 E:\code\php\yii\framework\web\CController.php(286): SiteController->runAction()
+#6 E:\code\php\yii\framework\web\CController.php(265): SiteController->runActionWithFilters()
+#7 E:\code\php\yii\framework\web\CWebApplication.php(282): SiteController->run()
+#8 E:\code\php\yii\framework\web\CWebApplication.php(141): CWebApplication->runController()
+#9 E:\code\php\yii\framework\base\CApplication.php(180): CWebApplication->processRequest()
+#10 E:\code\php\myBlog\index.php(13): CWebApplication->run()
+REQUEST_URI=/myblog/index.php?r=site/login&view=login
+in E:\code\php\myBlog\themes\bootstrap\views\site\login.php (19)
+in E:\code\php\myBlog\protected\controllers\SiteController.php (98)
+in E:\code\php\myBlog\index.php (13)

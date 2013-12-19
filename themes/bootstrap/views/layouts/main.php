@@ -55,12 +55,12 @@
     
      <div id="cont">  
         <div id="head">  
-            <div class="top_image">
+            <div class="top_image" style="border: 1px solid #ffff99;">
                 <?php $this->widget('bootstrap.widgets.TbCarousel', array(
                     'items'=>array(
-                        array('image'=>'images/t.jpg', 'label'=>'First Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
-                        array('image'=>'images/t.jpg', 'label'=>'Second Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
-                        array('image'=>'images/t.jpg', 'label'=>'Third Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
+                        array('image'=>'images/blog2.jpg', 'label'=>'Programmer change the world', 'caption'=>'I\'m on the way to learn various languages,never give up .'),
+                        array('image'=>'images/blog1.jpg', 'label'=>'About Me', 'caption'=>'来自软件工程专业的学生，略微了解C、C++、java、android、网页的前后台知识，正在准备学习数字图像处理、人工智能、grails等~.'),
+                        array('image'=>'images/t.jpg', 'label'=>'My Project', 'caption'=>'暂不展示.'),
                     ),
                    
                 )); ?>
@@ -115,5 +115,6 @@
 <!-- UJian Button BEGIN -->
 	<script type="text/javascript" src="http://v1.ujian.cc/code/ujian.js?type=slide"></script>
 <!-- UJian Button END -->
+
 </body>
 </html>

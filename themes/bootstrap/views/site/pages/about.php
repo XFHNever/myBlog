@@ -6,6 +6,7 @@ $this->breadcrumbs=array(
 	'About',
 );
 ?>
+
 <div style="width: 600px; text-align: center;margin: 0 auto; background: #cccccc;">
     <div class="about_me_image">
         <img class="image" src="images/icon.jpg"/>
