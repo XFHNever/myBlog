@@ -19,6 +19,9 @@
  */
 class Post extends CActiveRecord
 {
+        private $_oldTags;
+        private $recent_posts;  
+        private $hot_posts;  
 	/**
 	 * @return string the associated database table name
 	 */
@@ -39,11 +42,17 @@ class Post extends CActiveRecord
 			array('status, author_id', 'numerical', 'integerOnly'=>true),
 			array('post_title', 'length', 'max'=>128),
 			array('tags, create_time, update_time', 'safe'),
+                        array('tags','match','pattern'=>'/^[\w\s,]+$/',
+                        'message'=>'Tags can only contain word characters.'),
 			// The following rule is used by search().
 			// @todo Please remove those attributes that should not be searched.
 			array('post_id, post_title, post_content, tags, status, create_time, update_time, author_id', 'safe', 'on'=>'search'),
 		);
 	}
+
+        public function normalizeTags($attribute,$params){
+            $this->tags=Tag::array2string(array_unique(Tag::string2array($this->tags)));
+        }
 
 	/**
 	 * @return array relational rules.
@@ -55,6 +64,7 @@ class Post extends CActiveRecord
 		return array(
 			'comments' => array(self::HAS_MANY, 'Comment', 'post_id'),
 			'author' => array(self::BELONGS_TO, 'User', 'author_id'),
+                        'commentCount' => array(self::STAT,'Comment','post_id'),
 		);
 	}
 
@@ -74,8 +84,51 @@ class Post extends CActiveRecord
 			'author_id' => 'Author',
 		);
 	}
+        
+                protected function afterSave()
+        {
+            parent::afterSave();
+            Tag::model()->updateFrequency($this->_oldTags, $this->tags);
+        }
+        
+        
+       
+        protected function afterFind()
+        {
+            parent::afterFind();
+            $this->_oldTags=$this->tags;
+        }
+        
+        public function getRecentPosts(){
+            $criteria = new CDbCriteria();
+            $criteria->limit = 5;
+            $criteria->order = 'create_time DESC' ;//排序条件        
+            $this->recent_posts = Post::model()->findAll($criteria);
+            return $this->recent_posts;
+        }
+        
+        public function getHotPosts(){
+            $criteria = new CDbCriteria();
+            $criteria->limit = 5;
+            $criteria->order = 'view_num DESC' ;//排序条件        
+            $this->hot_posts = Post::model()->findAll($criteria);
+            return $this->hot_posts;
+        }
 
-	/**
+        public function getUrl()
+	{
+		return Yii::app()->createUrl('post/view', array(
+			'id'=>$this->post_id,
+		));
+	}
+
+
+        public function getPartContent(){
+            return substr($this->post_content, 0, 200);
+        }
+
+
+        /**
 	 * Retrieves a list of models based on the current search/filter conditions.
 	 *
 	 * Typical usecase:

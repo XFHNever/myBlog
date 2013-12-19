@@ -22,8 +22,17 @@
 
 	<div class="<?php echo $form->fieldClass($model, 'post_content'); ?>">
 		<?php echo $form->labelEx($model,'post_content'); ?>
-		<div class="input">
-			<?php echo $form->textArea($model,'post_content',array('rows'=>6, 'cols'=>50)); ?>
+            <div class="input">
+			<?php  $form->widget('application.extensions.editor.CKkceditor',array(   
+                            "model"=>$model,         //数据模型
+                            "attribute"=>'post_content',   //文本域中的字段，也就是之前文本域的名字
+                             "height"=>'300px',       //编辑器的高度
+                            "width"=>'99%',          //编辑器的宽度
+                            
+                            "filespath"=>Yii::app()->basePath."/../data/",
+                            "filesurl"=>Yii::app()->baseUrl."/data/",));
+                     //         textArea($model,'post_content',array('rows'=>6, 'cols'=>50)); 
+                        ?>
 			<?php echo $form->error($model,'post_content'); ?>
 		</div>
 	</div>
@@ -39,34 +48,13 @@
 	<div class="<?php echo $form->fieldClass($model, 'status'); ?>">
 		<?php echo $form->labelEx($model,'status'); ?>
 		<div class="input">
-			<?php echo $form->textField($model,'status'); ?>
+                        <?php echo $form->dropDownList($model,'status',  Lookup::items('PostStatus')); ?>
+			
 			<?php echo $form->error($model,'status'); ?>
 		</div>
 	</div>
 
-	<div class="<?php echo $form->fieldClass($model, 'create_time'); ?>">
-		<?php echo $form->labelEx($model,'create_time'); ?>
-		<div class="input">
-			<?php echo $form->textField($model,'create_time'); ?>
-			<?php echo $form->error($model,'create_time'); ?>
-		</div>
-	</div>
 
-	<div class="<?php echo $form->fieldClass($model, 'update_time'); ?>">
-		<?php echo $form->labelEx($model,'update_time'); ?>
-		<div class="input">
-			<?php echo $form->textField($model,'update_time'); ?>
-			<?php echo $form->error($model,'update_time'); ?>
-		</div>
-	</div>
-
-	<div class="<?php echo $form->fieldClass($model, 'author_id'); ?>">
-		<?php echo $form->labelEx($model,'author_id'); ?>
-		<div class="input">
-			<?php echo $form->textField($model,'author_id'); ?>
-			<?php echo $form->error($model,'author_id'); ?>
-		</div>
-	</div>
 
 	<div class="actions">
 		<?php echo BHtml::submitButton($model->isNewRecord ? 'Create' : 'Save'); ?>

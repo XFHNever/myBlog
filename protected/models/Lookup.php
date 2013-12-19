@@ -12,6 +12,37 @@
  */
 class Lookup extends CActiveRecord
 {
+    
+        private static $_items = array();
+        
+        private static function loadItem($type){
+            self::$_items[$type]=array();
+            $models = self::model()->findAll(array(
+                'condition'=>'type=:type',
+                'params'=>array(':type'=>$type),
+            ));
+            foreach ($models as $model){
+                self::$_items[$type][$model->code] = $model->lookup_name;
+            }
+        }
+        
+        public static function items($type){
+            if(!isset(self::$_items[$type])){
+                self::loadItem($type);
+            }
+            
+            return self::$_items[$type];
+        }
+        
+        public static function item($type,$code){
+            if(!isset(self::$_items[$type])){
+                self::loadItem($type);
+            }
+            
+            return isset(self::$_items[$type][$code])?self::$_items[$type][$code]:FALSE;
+        }
+
+        
 	/**
 	 * @return string the associated database table name
 	 */

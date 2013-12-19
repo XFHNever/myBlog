@@ -2,6 +2,9 @@
 
 class PostController extends Controller
 {
+      
+        private $recent_posts;
+        private $critria;
 	/**
 	 * @var string the default layout for the views. Defaults to '//layouts/column2', meaning
 	 * using two-column layout. See 'protected/views/layouts/column2.php'.
@@ -27,16 +30,12 @@ class PostController extends Controller
 	{
 		return array(
 			array('allow',  // allow all users to perform 'index' and 'view' actions
-				'actions'=>array('index','view'),
+				'actions'=>array('index','view','search','searchByTag'),
 				'users'=>array('*'),
 			),
 			array('allow', // allow authenticated user to perform 'create' and 'update' actions
-				'actions'=>array('create','update'),
+				'actions'=>array('create','update','admin'),
 				'users'=>array('@'),
-			),
-			array('allow', // allow admin user to perform 'admin' and 'delete' actions
-				'actions'=>array('admin','delete'),
-				'users'=>array('admin'),
 			),
 			array('deny',  // deny all users
 				'users'=>array('*'),
@@ -50,12 +49,73 @@ class PostController extends Controller
 	 */
 	public function actionView($id)
 	{
-		$this->render('view',array(
-			'model'=>$this->loadModel($id),
-		));
+                $model = $this->loadModel($id);
+                $model->view_num++;
+                if($model->save()){
+                    $this->render('view',array(
+			'model'=>$model,
+		    ));
+                }
 	}
 
-	/**
+
+        public function actionSearch(){  
+                if(isset($_POST['keyword'])){
+                    $this->critria['keyword']=$_POST['keyword'];
+                }
+                if(isset($_GET['keyword'])){
+                    $this->critria['keyword']=$_GET['keyword'];
+                }
+                
+                $criteria = new CDbCriteria();
+                $criteria->addSearchCondition('post_title',  $this->critria['keyword']);
+                $criteria->addSearchCondition('tags',  $this->critria['keyword'],true,'OR');
+                
+                
+                 $dataProvider=new CActiveDataProvider('Post',array(
+                  'criteria'=>$criteria,
+                  'pagination' => array(
+                  'pageSize' => 6,
+
+                ),
+                'sort'=>array(
+                     'defaultOrder' => 'update_time DESC',
+                ),
+                ));
+                 
+               
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+                      //  'pages'=> $pages,
+		));  
+        }
+        
+                public function actionSearchByTag($tag){     
+                $criteria = new CDbCriteria();
+                $criteria->addSearchCondition('tags',$tag);
+                
+                
+                 $dataProvider=new CActiveDataProvider('Post',array(
+                  'criteria'=>$criteria,
+                  'pagination' => array(
+                  'pageSize' => 6,
+
+                ),
+                'sort'=>array(
+                     'defaultOrder' => 'update_time DESC',
+                ),
+                ));
+                 
+               
+		$this->render('index',array(
+			'dataProvider'=>$dataProvider,
+                      //  'pages'=> $pages,
+		));  
+        }
+
+        
+
+        /**
 	 * Creates a new model.
 	 * If creation is successful, the browser will be redirected to the 'view' page.
 	 */
@@ -69,6 +129,8 @@ class PostController extends Controller
 		if(isset($_POST['Post']))
 		{
 			$model->attributes=$_POST['Post'];
+                        $model->create_time = $model->update_time = date('Y-m-d H:i:s',time());
+                        $model->author_id = Yii::app()->user->id;
 			if($model->save())
 				$this->redirect(array('view','id'=>$model->post_id));
 		}
@@ -127,7 +189,15 @@ class PostController extends Controller
 	 */
 	public function actionIndex()
 	{
-		$dataProvider=new CActiveDataProvider('Post');
+		$dataProvider=new CActiveDataProvider('Post',array(
+                        'pagination' => array(
+                          'pageSize' => 6,
+                   
+                ),
+                'sort'=>array(
+                     'defaultOrder' => 'update_time DESC',
+                ),
+                ));
 		$this->render('index',array(
 			'dataProvider'=>$dataProvider,
 		));

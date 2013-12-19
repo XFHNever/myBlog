@@ -14,46 +14,53 @@
 
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/main.css" />
 	<link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/form.css" />
-
+        <link rel="stylesheet" type="text/css" href="<?php echo Yii::app()->request->baseUrl; ?>/css/blog.css" />
+        
 	<title><?php echo CHtml::encode($this->pageTitle); ?></title>
 </head>
 
-<body>
-
-<div class="container" id="page">
-
-	<div id="header">
-		<div id="logo"><?php echo CHtml::encode(Yii::app()->name); ?></div>
-	</div><!-- header -->
-
-	<div id="mainmenu">
-		<?php $this->widget('zii.widgets.CMenu',array(
-			'items'=>array(
-				array('label'=>'Home', 'url'=>array('/post/index')),
-				array('label'=>'About', 'url'=>array('/site/page', 'view'=>'about')),
-				array('label'=>'Contact', 'url'=>array('/site/contact')),
-				array('label'=>'Login', 'url'=>array('/site/login'), 'visible'=>Yii::app()->user->isGuest),
-				array('label'=>'Logout ('.Yii::app()->user->name.')', 'url'=>array('/site/logout'), 'visible'=>!Yii::app()->user->isGuest)
-			),
-		)); ?>
-	</div><!-- mainmenu -->
-	<?php if(isset($this->breadcrumbs)):?>
-		<?php $this->widget('zii.widgets.CBreadcrumbs', array(
-			'links'=>$this->breadcrumbs,
-		)); ?><!-- breadcrumbs -->
-	<?php endif?>
-
-	<?php echo $content; ?>
-
-	<div class="clear"></div>
-
-	<div id="footer">
-		Copyright &copy; <?php echo date('Y'); ?> by Never.<br/>
-		All Rights Reserved.<br/>
-		Powered by Never.
-	</div><!-- footer -->
-
-</div><!-- page -->
-
+<body style="background: black;">     
+    
+     <div id="cont">  
+        <div id="head">
+            <div class="top_image">
+                <?php $this->widget('bootstrap.widgets.TbCarousel', array(
+                    'items'=>array(
+                        array('image'=>'images/t.jpg', 'label'=>'First Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
+                        array('image'=>'images/t1.gif', 'label'=>'Second Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
+                        array('image'=>'images/t.jpg', 'label'=>'Third Thumbnail label', 'caption'=>'Cras justo odio, dapibus ac facilisis in, egestas eget quam. Donec id elit non mi porta gravida at eget metus. Nullam id dolor id nibh ultricies vehicula ut id elit.'),
+                    ),
+                   
+                )); ?>
+            </div>
+            <div class="nav">
+                <div class="nav_bar">
+                    <?php $this->widget('bootstrap.widgets.TBMenu',array(
+                            'type'=>'pills',
+                            'scrollspy'=>'true',
+                            'items'=>array(
+                                    array('label'=>'Home', 'url'=>array('/post/index')),
+                                    array('label'=>'AboutMe', 'url'=>array('/site/page', 'view'=>'about')),
+                            ),
+                            'htmlOptions'=>array(
+                                //    'class'=>'nav',
+                                    'style'=>'font-size: 20px; font-weight:bold;vertical-align: middle;',
+                            ),
+                    )); ?>
+                   
+                </div>
+            </div>
+        </div>
+        
+        <div id="center">
+            <?php echo $content; ?>
+        </div>
+    </div>
+    
+    <div id="foot">
+        <p>Copyright &copy; <?php echo date('Y'); ?> by Never.<br/>
+        All Rights Reserved.<br/>
+        Powered by Never</p>
+    </div>
 </body>
 </html>
